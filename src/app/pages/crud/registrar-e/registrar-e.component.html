@@ -1,0 +1,50 @@
+<div class="card mt-4">
+    <div class="card-header">
+      Registrar
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="resgistrarE(forma)" #forma="ngForm" class="row g-3">
+        <div class="col-md-6">
+          <label for="label-strNombre" class="form-label">Nombre</label>
+          <input #inputStrNombre="ngModel" type="text" name="strNombre" [ngClass]="{'is-invalid': inputStrNombre.touched && inputStrNombre.hasError('required')}" [(ngModel)]="usuario.strNombre" class="form-control" id="strNombre" required>
+          <div class="invalid-feedback">
+            Campo incorrecto
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="strRazonSocial" class="form-label">Razon Social</label>
+          <input #inputStrRazonSocial="ngModel" type="text" name="strRazonSocial" [ngClass]="{'is-invalid': inputStrRazonSocial.touched && inputStrRazonSocial.hasError('required')}" [(ngModel)]="usuario.strRazonSocial" class="form-control" id="strRazonSocial" required>
+          <div class="invalid-feedback">
+            Campo incorrecto
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="strRFC" class="form-label">RFC</label>
+            <input #inputStrRFC="ngModel" type="text" name="strRFC" [ngClass]="{'is-invalid': inputStrRFC.touched && inputStrRFC.hasError('required')}" [(ngModel)]="usuario.strRFC" class="form-control" id="strRFC" required>
+            <div class="invalid-feedback">
+              Campo incorrecto
+            </div>
+          </div>
+
+        <div class="col-md-6">
+          <label for="strDireccion" class="form-label">Direccion (Opcional)</label>
+          <input type="text" name="strDireccion" [(ngModel)]="usuario.strDireccion" class="form-control" id="strDireccion">
+        </div>
+
+        <div class="col-md-6">
+            <label for="strUrlLogo" class="form-label">URL de logo</label>
+            <input #inputStrUrlLogo="ngModel" type="text" name="strUrlLogo" [ngClass]="{'is-invalid': inputStrUrlLogo.touched && inputStrUrlLogo.hasError('required')}" [(ngModel)]="usuario.strUrlLogo" class="form-control" id="strUrlLogo" required>
+            <div class="invalid-feedback">
+              Campo incorrecto
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="strPais" class="form-label">Pais (Opcional)</label>
+            <input type="text" name="strPais" [(ngModel)]="usuario.strPais" class="form-control" id="strPais">
+          </div>
+      </form>
+    </div>
+  </div>

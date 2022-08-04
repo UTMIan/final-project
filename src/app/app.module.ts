@@ -6,17 +6,25 @@ import { AppComponent } from './app.component';
 import { InicioComponent } from './pages/inicio/inicio.component';
 import { CrudComponent } from './pages/crud/crud.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
+import { RegistrarEComponent } from './pages/crud/registrar-e/registrar-e.component';
+import { ActualizarEComponent } from './pages/crud/actualizar-e/actualizar-e.component';
+import { FormsModule } from '@angular/forms';
+import { HttpClientModule } from '@angular/common/http'
 
 @NgModule({
   declarations: [
     AppComponent,
     InicioComponent,
     CrudComponent,
-    NavbarComponent
+    NavbarComponent,
+    RegistrarEComponent,
+    ActualizarEComponent
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    FormsModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
