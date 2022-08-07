@@ -26,8 +26,12 @@ export class EmpresasService {
     return lastValueFrom(this.http.post(`${this.url}`, empresa, {params:{matricula:this.matricula}}));
   }
 
-  putEmpresas(){
+  putEmpresa(empresa: EmpresasModel, idEmpresa: string){
+    return lastValueFrom(this.http.put(`${this.url}/${idEmpresa}`, empresa, {params:{matricula:this.matricula}}));
+  }
 
+  deleteEmpresas(idEmpresa: any){
+    return lastValueFrom(this.http.delete(`${this.url}/${idEmpresa}`, {params:{matricula:this.matricula}}));
   }
 
 }

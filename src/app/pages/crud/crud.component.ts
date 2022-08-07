@@ -11,28 +11,67 @@ import { EmpresasService } from 'src/app/services/empresas.service';
 export class CrudComponent implements OnInit {
 
   showUpdate: boolean = false;
-  Empresas: EmpresasModel[] = [];
+  empresas: EmpresasModel[] = [];
   idEmpresa: string="";
 
   constructor(private readonly empresasService: EmpresasService) { }
 
   ngOnInit(): void {
-    this.empresasService.getEmpresas()
-    .then((response:any)=>{
-      this.Empresas = response.cont.usuarios;
-      console.log(this.Empresas);
-    })
-    .catch((error:any)=>{
-      Swal.fire({
-        icon: "error",
-        text: error.error.msg
+    this.obtenerEmp();
+    }
+
+    obtenerEmp(){
+      this.empresasService.getEmpresas()
+      .then((response:any)=>{
+        this.empresas = response.cont.empresas;
       })
-    })
+      .catch((error:any)=>{
+        this.empresas = [];
+      }) 
   }
 
   update(idEmpresa: any){
     this.idEmpresa = idEmpresa;
     this.showUpdate = !this.showUpdate;
+  }
+
+  restablecerRegistro(){
+    this.showUpdate = false;
+    this.obtenerEmp();
+  }
+
+  eliminar(empresa: EmpresasModel){
+    Swal.fire({
+      icon:'question',
+      title: `Seguro que desea eliminar ${empresa.strNombre}?`,
+
+      showCancelButton: true,
+      confirmButtonText: "Confirmar",
+      cancelButtonText: "Cancelar"
+    })
+    .then((response) => {
+      if (response.isConfirmed) {
+        this.empresasService.deleteEmpresas(empresa._id)
+        .then((result:any) => {
+          Swal.fire({
+            icon: "info",
+            text: "Empresa eliminada"
+          });
+          this.obtenerEmp();
+        })
+      }
+    })
+    .catch((error: any) => {
+      Swal.fire({
+        icon: "error",
+        text: "Fallo en la eliminacion"
+      })
+    });
+  }
+
+  shwUpdate(idEmpresa:any){
+    this.idEmpresa = idEmpresa;
+    this.showUpdate = true;
   }
 
 }

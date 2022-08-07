@@ -11,18 +11,18 @@ import Swal from 'sweetalert2';
 })
 export class RegistrarEComponent implements OnInit {
 
- usuario: EmpresasModel = new EmpresasModel();
-  constructor(private readonly EmpresasService: EmpresasService) { }
+ empresa: EmpresasModel = new EmpresasModel();
+  constructor(private readonly empresasService: EmpresasService) { }
 
   ngOnInit(): void {
   }
 
   resgistrarE(forma: NgForm){
-   this.EmpresasService.postEmpresas(this.usuario)
+   this.empresasService.postEmpresas(this.empresa)
     .then((response:any)=>{
       Swal.fire({
         icon: "success",
-        text:"Registrado correctamente :D"
+        text:"Empresa registrada"
     });
     forma.reset();
   })
@@ -32,9 +32,7 @@ export class RegistrarEComponent implements OnInit {
         text:"Ha ocurrido un error"
       });
     });
-   // console.log('Se regstro correctamente');
-   // console.log(this.usuario);
-   // console.log(forma.invalid);
+
   }
 
   limpiarForm(forma: NgForm){

@@ -1,1 +1,56 @@
-<p>actualizar-e works!</p>
+<div class="card mt-4">
+    <div class="card-header">
+      Actualizar Empresa
+    </div>
+    <div class="card-body">
+      <form (ngSubmit)="actualizarEmp(forma)" #forma="ngForm" class="row g-3">
+        <div class="col-md-6">
+          <label for="label-strNombre" class="form-label">Nombre de empresa</label>
+          <input #inputStrNombre="ngModel" type="text" name="strNombre" [ngClass]="{'is-invalid': inputStrNombre.touched && inputStrNombre.hasError('required')}" [(ngModel)]="empresa.strNombre" class="form-control" id="strNombre" required>
+          <div class="invalid-feedback">
+            Campo incorrecto
+          </div>
+        </div>
+
+        <div class="col-md-6">
+          <label for="strRazonSocial" class="form-label">Razon Social</label>
+          <input #inputStrRazonSocial="ngModel" type="text" name="strRazonSocial" [ngClass]="{'is-invalid': inputStrRazonSocial.touched && inputStrRazonSocial.hasError('required')}" [(ngModel)]="empresa.strRazonSocial" class="form-control" id="strRazonSocial" required>
+          <div class="invalid-feedback">
+            Campo incorrecto
+          </div>
+        </div>
+
+        <div class="col-md-6">
+            <label for="strRFC" class="form-label">RFC</label>
+            <input #inputStrRFC="ngModel" type="text" name="strRFC" [ngClass]="{'is-invalid': inputStrRFC.touched && inputStrRFC.hasError('required')}" [(ngModel)]="empresa.strRFC" class="form-control" id="strRFC" required>
+            <div class="invalid-feedback">
+              Campo incorrecto
+            </div>
+          </div>
+
+        <div class="col-md-6">
+          <label for="strDireccion" class="form-label">Direccion (Opcional)</label>
+          <input type="text" name="strDireccion" [(ngModel)]="empresa.strDireccion" class="form-control" id="strDireccion">
+        </div>
+
+        <div class="col-md-6">
+            <label for="strUrlLogo" class="form-label">URL de logo</label>
+            <input #inputStrUrlLogo="ngModel" type="text" name="strUrlLogo" [ngClass]="{'is-invalid': inputStrUrlLogo.touched && inputStrUrlLogo.hasError('required')}" [(ngModel)]="empresa.strUrlLogo" class="form-control" id="strUrlLogo" required>
+            <div class="invalid-feedback">
+              Campo incorrecto
+            </div>
+          </div>
+
+          <div class="col-md-6">
+            <label for="strPais" class="form-label">Pais (Opcional)</label>
+            <input type="text" name="strPais" [(ngModel)]="empresa.strPais" class="form-control" id="strPais">
+          </div>
+
+          <div class="col-12">
+            <button type="submit" class="btn btn-dark" [disabled]="forma.invalid">Actualizar</button>
+            <button style="margin-left: 5px" type="button" class="btn btn-danger" (click)="limpiarForm(forma)">Clear</button>
+          </div>
+      </form>
+    </div>
+  </div>
+

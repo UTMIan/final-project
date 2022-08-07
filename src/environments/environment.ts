@@ -4,7 +4,7 @@
 
 export const environment = {
   production: false,
-  baseURL: "https://app-tidsm-6a.herokuapp.com/api/empresa",
+  baseURL: "https://api-tidsm-6a.herokuapp.com/api",
   matricula: "UTM20040084"
 };
 
